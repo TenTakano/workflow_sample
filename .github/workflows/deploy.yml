@@ -19,12 +19,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check
-        run: echo ${{ secrets.TEST }}
-
-      - name: Check URL
-        run: echo ${{ secrets.DISCORD_WEBHOOK_URL }}
-
       - name: Notify
         run: |
           curl -X POST -H "Content-Type: application/json" \
