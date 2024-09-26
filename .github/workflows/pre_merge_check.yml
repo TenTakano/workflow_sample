@@ -26,5 +26,8 @@ jobs:
       #       ${{ secrets.DISCORD_WEBHOOK_URL }}
 
       - name: Check
-        if: startsWith(${{github.event.pull_request.title}}, '[update]')
-        run: echo "Run!!Run!!"
+        run: |
+          TITLE=${{ github.event.pull_request.title }}
+          if [[ $TITLE =~ ^[update] ]]; then
+            echo "アップデートがリリースされました。アップデート内容は以下のとおりです。\n\n${{ github.event.pull_request.body }}"
+          fi
