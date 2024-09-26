@@ -16,8 +16,15 @@ jobs:
       - name: Do Pre Merge Check
         run: echo "Do Pre Merge Check"
 
-      - name: echo
-        run: |
-          echo "${{ github.event.pull_request.title }}"
-          echo "アップデートがリリースされました。アップデート内容は以下のとおりです。\n\n${{ github.event.pull_request.body }}"
-          echo "${{ github.event.pull_request }}"
+      # - name: echo
+      #   run: |
+      #     echo "${{ github.event.pull_request.title }}"
+      #     echo "アップデートがリリースされました。アップデート内容は以下のとおりです。\n\n${{ github.event.pull_request.body }}"
+      #     echo "${{ github.event.pull_request }}"
+      #     curl -X POST -H "Content-Type: application/json" \
+      #       -d "$JSON" \
+      #       ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+      - name: Check
+        if: startsWith(${{github.event.pull_request.title}}, '[update]')
+        run: echo "Run!!"
