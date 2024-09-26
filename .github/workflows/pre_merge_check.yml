@@ -23,8 +23,10 @@ jobs:
           echo "*******************************"
           MESSAGE="アップデートがリリースされました。\n\nアップデート内容は以下のとおりです。$BODY"
           echo $MESSAGE
-
+          echo "*******************************"
+          JSON=$(jq -n --arg msg "$MESSAGE" '{content: $msg}')
+          echo $JSON
           echo "${{ github.event.pull_request }}"
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"content": $MESSAGE}' \
+            -d "$JSON" \
             ${{ secrets.DISCORD_WEBHOOK_URL }}
