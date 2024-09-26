@@ -20,3 +20,5 @@ jobs:
     needs: pre_merge_check
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
+    with:
+      message: "Deploying from Pre Merge Check"
