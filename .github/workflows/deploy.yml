@@ -1,10 +1,12 @@
 name: Deploy
 
 on:
-  workflow_call:
+  pull_request:
+    types: [closed]
 
 jobs:
   deploy:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
@@ -13,3 +15,9 @@ jobs:
 
       - name: Do Something
         run: echo "Do Something"
+
+      - name: Notify
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+            -d '{"content": "アップデートがリリースされました。アップデート内容は以下のとおりです。\n\n${{ github.event.pull_request.body }}"}' \
+            ${{ secrets.DISCORD_WEBHOOK_URL }}
