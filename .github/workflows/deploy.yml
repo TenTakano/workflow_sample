@@ -13,3 +13,14 @@ jobs:
 
       - name: Do Something
         run: echo "Do Something"
+
+  notify:
+    needs: Notify
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify
+        uses: tsickert/discord-webhook@5
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          content: "Deployed successfully"
