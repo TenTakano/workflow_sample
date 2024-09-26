@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check URL
+        run: echo ${{ secrets.DISCORD_WEBHOOK_URL }}
+
       - name: Notify
         uses: tsickert/discord-webhook@v6.0.0
         with:
