@@ -29,5 +29,5 @@ jobs:
         run: |
           TITLE="${{ github.event.pull_request.title }}"
           if [[ "$TITLE" =~ ^\[update\] ]]; then
-            echo "アップデートがリリースされました。アップデート内容は以下のとおりです。\n\n${{ github.event.pull_request.body }}"
+            echo "アップデートがリリースされました。アップデート内容は以下のとおりです!!\n\n${{ github.event.pull_request.body }}"
           fi
