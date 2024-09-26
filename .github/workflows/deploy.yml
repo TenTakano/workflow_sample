@@ -15,7 +15,7 @@ jobs:
         run: echo "Do Something"
 
   notify:
-    needs: Notify
+    needs: deploy
     runs-on: ubuntu-latest
 
     steps:
