@@ -20,7 +20,9 @@ jobs:
         run: |
           BODY="${{ github.event.pull_request.body }}"
           echo $BODY
+          echo "*******************************"
           MESSAGE="アップデートがリリースされました。\r\nアップデート内容は以下のとおりです。$BODY"
+          echo $MESSAGE
 
           echo "${{ github.event.pull_request }}"
           curl -X POST -H "Content-Type: application/json" \
