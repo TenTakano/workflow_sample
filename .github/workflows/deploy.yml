@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Notify
-        uses: tsickert/discord-webhook@5
+        uses: tsickert/discord-webhook@6.0.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           content: "Deployed successfully"
