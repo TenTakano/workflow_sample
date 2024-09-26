@@ -27,4 +27,4 @@ jobs:
 
       - name: Check
         if: startsWith(${{github.event.pull_request.title}}, '[update]')
-        run: echo "Run!!"
+        run: echo "Run!!Run!!"
