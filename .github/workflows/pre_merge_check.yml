@@ -17,4 +17,5 @@ jobs:
         run: echo "Do Pre Merge Check"
 
   call_deploy:
+    needs: pre_merge_check
     uses: ./.github/workflows/deploy.yml
