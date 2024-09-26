@@ -18,7 +18,4 @@ jobs:
 
   call_deploy:
     needs: pre_merge_check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Call deploy
-        uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/deploy.yml
