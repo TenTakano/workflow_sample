@@ -15,3 +15,10 @@ jobs:
 
       - name: Do Pre Merge Check
         run: echo "Do Pre Merge Check"
+
+  call_deploy:
+    needs: pre_merge_check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call deploy
+        uses: ./.github/workflows/deploy.yml
