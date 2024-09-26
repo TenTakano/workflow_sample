@@ -19,5 +19,5 @@ jobs:
       - name: Notify
         run: |
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"content": "message"}' \
+            -d '{"content": "アップデートがリリースされました。アップデート内容は以下のとおりです。\n\n${{ github.event.pull_request.body }}"}' \
             ${{ secrets.DISCORD_WEBHOOK_URL }}

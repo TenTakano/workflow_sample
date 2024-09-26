@@ -19,5 +19,5 @@ jobs:
       - name: echo
         run: |
           echo "${{ github.event.pull_request.title }}"
-          echo "${{ github.event.pull_request.body }}"
+          echo "アップデートがリリースされました。アップデート内容は以下のとおりです。\n\n${{ github.event.pull_request.body }}"
           echo "${{ github.event.pull_request }}"
