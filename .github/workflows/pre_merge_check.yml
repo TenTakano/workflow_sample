@@ -22,3 +22,4 @@ jobs:
   call_deploy:
     needs: pre_merge_check
     uses: ./.github/workflows/deploy.yml
+    secrets: inherit
