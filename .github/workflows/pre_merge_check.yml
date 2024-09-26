@@ -16,9 +16,7 @@ jobs:
       - name: Do Pre Merge Check
         run: echo "Do Pre Merge Check"
 
-  call_deploy:
-    needs: pre_merge_check
-    uses: ./.github/workflows/deploy.yml
-    secrets: inherit
-    with:
-      message: "Deploying from Pre Merge Check"
+      - name: echo
+        run: |
+          echo ${{ github.event.pull_request.title }}
+          echo ${{ github.event.pull_request.body }}

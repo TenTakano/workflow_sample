@@ -1,14 +1,12 @@
 name: Deploy
 
 on:
-  workflow_call:
-    inputs:
-      message:
-        required: true
-        type: string
+  pull_request:
+    types: [closed]
 
 jobs:
   deploy:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
@@ -18,13 +16,8 @@ jobs:
       - name: Do Something
         run: echo "Do Something"
 
-  notify:
-    needs: deploy
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Notify
         run: |
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"content": "${{ inputs.message }}"}' \
+            -d '{"content": "message"}' \
             ${{ secrets.DISCORD_WEBHOOK_URL }}
