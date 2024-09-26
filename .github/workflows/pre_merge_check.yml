@@ -21,7 +21,7 @@ jobs:
           BODY="${{ github.event.pull_request.body }}"
           echo $BODY
           echo "*******************************"
-          MESSAGE="アップデートがリリースされました。\r\nアップデート内容は以下のとおりです。$BODY"
+          MESSAGE="アップデートがリリースされました。\n\nアップデート内容は以下のとおりです。$BODY"
           echo $MESSAGE
 
           echo "${{ github.event.pull_request }}"
