@@ -16,6 +16,9 @@ jobs:
       - name: Do Pre Merge Check
         run: echo "Do Pre Merge Check"
 
+      - name: secrets.TEST
+        run: echo ${{ secrets.TEST }}
+
   call_deploy:
     needs: pre_merge_check
     uses: ./.github/workflows/deploy.yml
