@@ -16,8 +16,13 @@ jobs:
       - name: Do Pre Merge Check
         run: echo "Do Pre Merge Check"
 
-      - name: echo
+      - name: Notify
         run: |
-          echo "${{ github.event.pull_request.title }}"
-          echo "アップデートがリリースされました。アップデート内容は以下のとおりです。\n\n${{ github.event.pull_request.body }}"
+          BODY="${{ github.event.pull_request.body }}"
+          echo $BODY
+          MESSAGE="アップデートがリリースされました。\r\nアップデート内容は以下のとおりです。$BODY"
+
           echo "${{ github.event.pull_request }}"
+          curl -X POST -H "Content-Type: application/json" \
+            -d '{"content": $MESSAGE}' \
+            ${{ secrets.DISCORD_WEBHOOK_URL }}
