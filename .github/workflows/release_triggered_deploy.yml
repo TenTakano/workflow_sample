@@ -19,7 +19,7 @@ jobs:
         run: echo "Executing Pre Deployment Script"
 
       - name: Returns Result
-        run: exit 1
+        run: exit 0
 
   deploy:
     needs: pre-deployment-check
@@ -41,5 +41,5 @@ jobs:
       - name: Notify to Discord
         run: |
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"content": "Deployment failed for ${GITHUB_REF}"}' \
+            -d '{"content": "Deployment failed."}' \
             ${{ secrets.DISCORD_WEBHOOK_URL }}
