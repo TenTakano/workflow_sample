@@ -1,3 +1,3 @@
-# workflow_test
+# Workflow Sample
 
-OK?
+このリポジトリは個人的なサンプルworkflowです。
