@@ -1,0 +1,18 @@
+name: Check Suite Complete
+
+on:
+  workflow_run:
+    workflow:
+      - Release Drafter
+    types: 
+      - completed
+
+jobs:
+  check_suite_complete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Call pre merge check
+        run: echo "Triggered by Workflow Completed"
