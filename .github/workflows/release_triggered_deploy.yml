@@ -2,7 +2,8 @@ name: Release Triggered Deploy
 
 on:
   release:
-    types: [published]
+    types:
+      - published
 
 jobs:
   pre-deployment-check:
