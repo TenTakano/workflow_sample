@@ -2,9 +2,9 @@ name: Auto Merge
 
 on:
   workflow_run:
-    workflow:
+    workflows:
       - Release Drafter
-    types:
+    types: 
       - completed
     branches-ignore:
       - master
