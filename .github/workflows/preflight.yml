@@ -1,0 +1,14 @@
+name: Preflight
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  exec_preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do Something
+        run: echo "Exec Preflight Script"
