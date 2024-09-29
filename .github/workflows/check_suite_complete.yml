@@ -3,7 +3,7 @@ name: Check Suite Complete
 on:
   workflow_run:
     workflow:
-      - Release Drafter
+      - Preflight
     types: 
       - completed
 
