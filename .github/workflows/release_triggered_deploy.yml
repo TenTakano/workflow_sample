@@ -27,7 +27,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Do Something
-        run: echo "Deploying ${GITHUB_REF}"
+        run: echo "Exec Deploy Script"
+
+      - name: Notify to Discord
+        run: |
+          RELEASE_NOTE="${{ github.event.release.body }}"
+          MESSAGE=$'サービスがアップデートされました。\nアップデート内容は以下です。\n\n'$RELEASE_NOTE
+          JSON=$(jq -n --arg msg "$MESSAGE" '{content: $msg}')
+          curl -X POST -H "Content-Type: application/json" -d "$JSON" \
+            ${{ secrets.DISCORD_WEBHOOK_URL }}
 
   notify-failure:
     needs: pre-deployment-check
