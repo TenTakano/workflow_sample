@@ -1,0 +1,15 @@
+name: Check Suite Complete
+
+on:
+  check_suite:
+    types: [completed]
+
+jobs:
+  check_suite_complete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Call pre merge check
+        uses: echo "Check Suite Complete"
