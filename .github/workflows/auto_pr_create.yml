@@ -1,0 +1,42 @@
+name: PR Auto Create
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  create_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check if PR already exists
+        run: |
+          PR_EXISTS=$(gh pr list --base master --head ${{ github.ref_name }} --repo ${{ github.repository }} | wc -l)
+          echo "PR_EXISTS=$PR_EXISTS" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create PR
+        if: env.PR_EXISTS == 0
+        run: |
+          BRANCH_NAME=${{ github.ref_name }}
+          PREPOSITIONS="For|In|To|With|On|At|From|By|About|As|Into|Like|Through|After|Over|Between|Out|Against|During|Without|Before|Under|Around|Among"
+          # 最初の単語を特別扱いするために抽出し、括弧を追加
+          PREFIX=$(echo $BRANCH_NAME | sed -r "s/^([a-z]+)_.*$/\1/")
+          # 残りの文字列を整形
+          REMAINING_TITLE=$(echo $BRANCH_NAME | sed -r "s/^[a-z]+_(.*)$/\1/; s/_/ /g; s/\b([a-z])/\u\1/g; s/\b($PREPOSITIONS)\b/\L\1/g")
+          # 全体のタイトルを組み立て
+          PR_TITLE="[$PREFIX] $REMAINING_TITLE"
+          gh pr create --base master \
+            --head ${{ github.ref }} \
+            --title "$PR_TITLE" \
+            --body "This PR was automatically created by the PR Auto Create workflow."  \
+            --repo ${{ github.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout
+        uses: actions/checkout@master
