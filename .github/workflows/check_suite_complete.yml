@@ -2,8 +2,10 @@ name: Check Suite Complete
 
 on:
   workflow_run:
-    workflow: ["Release Drafter"]
-    types: [completed]
+    workflow:
+      - Release Drafter
+    types: 
+      - completed
 
 jobs:
   check_suite_complete:
