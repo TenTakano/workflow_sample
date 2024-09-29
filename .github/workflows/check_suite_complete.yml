@@ -2,7 +2,7 @@ name: Check Suite Complete
 
 on:
   workflow_run:
-    workflow:
+    workflows:
       - Preflight
     types: 
       - completed
