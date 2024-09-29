@@ -1,11 +1,13 @@
-name: Check Suite Complete
+name: Auto Merge
 
 on:
   workflow_run:
     workflows:
-      - Preflight
+      - Release Drafter
     types: 
       - completed
+    branches-ignore:
+      - master
 
 jobs:
   check_suite_complete:
