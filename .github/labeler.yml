@@ -1,25 +1,25 @@
 feature:
   - head-branch: 
-    - '^feat(ure)?'
+    - '/^feat(ure)?_.+/'
 
 enhancement:
   - head-branch:
-    - '^enhancement'
-    - '^improve'
-    - '^revise'
+    - '/^enhancement_.+/'
+    - '/^improve_.+/'
+    - '/^revise_.+/'
 
 bug:
   - head-branch:
-    - '^fix'
+    - '/^fix_.+/'
 
 refactor:
   - head-branch:
-    - '^refactor(ing)?'
+    - '/^refactor(ing)?_.+/'
 
 documentation:
   - head-branch:
-    - '^doc(ument)?'
+    - '/^doc(umentation)?_.+/'
 
 chore:
   - head-branch:
-    - '^chore'
+    - '/^chore_.+/'
