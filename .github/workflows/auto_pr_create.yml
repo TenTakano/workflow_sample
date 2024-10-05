@@ -49,6 +49,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Checkout Code for Labeling
+        uses: actions/checkout@v4
+
       - name: Label PR
         uses: actions/labeler@v5
         with:
