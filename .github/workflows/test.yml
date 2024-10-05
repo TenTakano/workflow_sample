@@ -24,7 +24,7 @@ jobs:
         id: label_pr
         uses: actions/labeler@v5
         with:
-          pr-number: 48
+          pr-number: 49
 
       - name: echo
         run: |
