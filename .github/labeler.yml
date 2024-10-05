@@ -23,3 +23,7 @@ documentation:
 chore:
   - head-branch:
     - '^chore'
+
+check:
+  - head-branch:
+    - 'fix_auto_labeler'

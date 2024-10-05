@@ -1,0 +1,34 @@
+name: Test for Labeler
+
+on:
+  workflow_dispatch
+
+jobs:
+  check:
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code for Labeling
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: cat
+        run: |
+          cat .github/labeler.yml
+
+      - name: Label PR
+        id: label_pr
+        uses: actions/labeler@v5
+        with:
+          pr-number: 48
+
+      - name: echo
+        run: |
+          echo "hoge"
+          echo ${{ steps.label_pr.outputs }}
+          echo ${{ steps.label_pr.outputs.all-labels }}
+          echo "piyo"
