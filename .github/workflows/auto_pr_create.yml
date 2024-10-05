@@ -52,14 +52,13 @@ jobs:
       - name: Checkout Code for Labeling
         uses: actions/checkout@v4
 
-      - name: echo
-        run: |
-          echo "edho"
-          echo $PR_NUMBER
-          ls -la
-          ls .github
-
       - name: Label PR
+        id: label_pr
         uses: actions/labeler@v5
         with:
           pr-number: ${{ steps.create_pull_request.outputs.pr_number }}
+
+      - name: echo
+        run: |
+          echo "hoge"
+          echo ${{ steps.label-pr.outputs.all-labels }}
