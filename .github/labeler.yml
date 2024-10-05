@@ -9,7 +9,7 @@ enhancement:
     - '^revise'
 
 bug:
-  - head-branch
+  - head-branch:
     - '^fix'
 
 refactor:
