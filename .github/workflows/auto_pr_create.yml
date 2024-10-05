@@ -67,4 +67,5 @@ jobs:
       - name: echo
         run: |
           echo "hoge"
-          echo ${{ steps.label-pr.outputs.all-labels }}
+          echo ${{ steps.label_pr.outputs.all-labels }}
+          echo "piyo"
