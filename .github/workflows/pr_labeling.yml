@@ -24,8 +24,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Chckeout code
-        uses: actions/checkout@v4
-
       - name: Labeling
         uses: actions/labeler@v5
+        with:
+          pr-number: ${{ env.PR_NUMBER }}
