@@ -53,7 +53,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: echo
-        run:
+        run: |
           echo "edho"
           echo $PR_NUMBER
           ls -la
