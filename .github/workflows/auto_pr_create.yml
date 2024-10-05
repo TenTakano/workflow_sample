@@ -52,6 +52,13 @@ jobs:
       - name: Checkout Code for Labeling
         uses: actions/checkout@v4
 
+      - name: echo
+        run:
+          echo "edho"
+          echo $PR_NUMBER
+          ls -la
+          ls .github
+
       - name: Label PR
         uses: actions/labeler@v5
         with:
