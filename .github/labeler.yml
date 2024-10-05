@@ -1,0 +1,24 @@
+feature:
+  - head-branch: 
+    - '^feat(ure)?'
+
+enhancement:
+  - head-branch:
+    - '^enhancement'
+    - '^improve'
+
+bug:
+  - head-branch
+    - '^fix'
+
+refactor:
+  - head-branch:
+    - '^refactor(ing)?'
+
+documentation:
+  - head-branch:
+    - '^doc(ument)?'
+
+chore:
+  - head-branch:
+    - '^chore'
