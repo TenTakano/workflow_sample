@@ -8,6 +8,3 @@
   - ラベルに基づいてリリースノートを自動作成
 - release_triggered_deployment.yml
   - リリースをpublishしたときにデプロイ前のチェックとデプロイをして、結果をDiscordへ通知
-
-
-  テスト
