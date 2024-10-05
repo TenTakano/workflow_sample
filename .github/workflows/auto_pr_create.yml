@@ -51,6 +51,12 @@ jobs:
 
       - name: Checkout Code for Labeling
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: cat
+        run: |
+          cat .github/labeler.yml
 
       - name: Label PR
         id: label_pr
