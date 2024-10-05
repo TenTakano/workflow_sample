@@ -16,7 +16,7 @@ jobs:
         id: check_if_pr_exists
         run: |
           PR_EXISTS=$(gh pr list --base master --head ${{ github.ref_name }} --repo ${{ github.repository }} | wc -l)
-          echo "::set-output name=pr_exists::$PR_EXISTS"
+          echo "name=pr_exists::$PR_EXISTS" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
