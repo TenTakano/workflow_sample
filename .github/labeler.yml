@@ -6,9 +6,10 @@ enhancement:
   - head-branch:
     - '^enhancement'
     - '^improve'
+    - '^revise'
 
 bug:
-  - head-branch
+  - head-branch:
     - '^fix'
 
 refactor:
