@@ -44,7 +44,7 @@ jobs:
             --body "This PR was automatically created by the PR Auto Create workflow."  \
             --repo ${{ github.repository }})
           PR_NUMER=$(echo $PR_URL | sed -r "s/.*\/pull\/([0-9]+)/\1/")
-          echo "$PR_NUMBER"
+          echo $PR_NUMBER
           echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
 
         env:
