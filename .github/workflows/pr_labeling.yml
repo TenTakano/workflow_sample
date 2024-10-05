@@ -24,6 +24,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: echo
+        run: |
+          echo "${{ env.PR_NUMBER }}"
+
       - name: Labeling
         uses: actions/labeler@v5
         with:
