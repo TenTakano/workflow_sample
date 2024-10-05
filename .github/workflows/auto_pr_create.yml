@@ -6,19 +6,26 @@ on:
       - master
 
 jobs:
-  create_pull_request:
+  check_pr_existence:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    outputs:
+      pr_exists: ${{ steps.check_if_pr_exists.outputs.pr_exists }}
 
+    steps:
       - name: Check if PR already exists
+        id: check_if_pr_exists
         run: |
           PR_EXISTS=$(gh pr list --base master --head ${{ github.ref_name }} --repo ${{ github.repository }} | wc -l)
-          echo "PR_EXISTS=$PR_EXISTS" >> $GITHUB_ENV
+          echo "::set-output name=pr_exists::$PR_EXISTS"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  create_pull_request:
+    needs: check_pr_existence
+    if: needs.check_pr_existence.outputs.pr_exists == 0
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Create PR
         if: env.PR_EXISTS == 0
         run: |
@@ -37,6 +44,3 @@ jobs:
             --repo ${{ github.repository }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Checkout
-        uses: actions/checkout@master
